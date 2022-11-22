@@ -14,12 +14,12 @@ export default class Weather extends React.Component{
     render(){
         return(
             <>
-                <h1>Weather</h1>
                 <Form>
                     <Form.Group className="mb-2 w-50" controlId="formWeatherLocation">
                       <Form.Label>Location</Form.Label>
                         <Form.Control type="text" placeholder="New York, NY" />
                      </Form.Group>
+                     <Button variant="primary" type="submit">Get The Weather</Button>
                 </Form>
                 {getWeather('London')}
             </>

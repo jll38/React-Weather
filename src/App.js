@@ -7,7 +7,9 @@ import Weather from './components/weather';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-body">
+        <h1>Weather</h1>
+        <hr/>
         <div className="container" id="weather-container">
           <Weather />
         </div>
