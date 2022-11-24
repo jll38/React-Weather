@@ -40,7 +40,8 @@ function getWeather(props){
     const location = handleLocation(props)
     const weatherInfo = (
         <>
-            <h1>{props}</h1>
+            {props && <h1>Displaying Weather for: {props}</h1>}
+            {!props && <h1>Please input a location!</h1>}
 
         </>
     )
