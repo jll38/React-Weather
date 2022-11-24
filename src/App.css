@@ -21,11 +21,9 @@
 label{
   float:left;
 }
-
-hr{
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 2px solid rgb(0, 0, 0);
-  width:300px
+form{
+  display:inline;
+}
+#weather-container{
+  width: 61%;
 }

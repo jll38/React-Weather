@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import ReactDOM from 'react-dom';
 import { config } from "../index";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -17,11 +18,11 @@ export default class Weather extends React.Component{
                 <Form>
                     <Form.Group className="mb-2 w-50" controlId="formWeatherLocation">
                       <Form.Label>Location</Form.Label>
-                        <Form.Control type="text" placeholder="New York, NY" />
+                        <Form.Control type="text" placeholder="New York, NY" id="weatherInput" />
                      </Form.Group>
-                     <Button variant="primary" type="submit">Get The Weather</Button>
+                     <Button variant="primary" onClick={() => {getWeather(document.getElementById('weatherInput').value)}}>Get The Weather</Button>
                 </Form>
-                {getWeather('London')}
+                <div id="weatherOutput"></div>
             </>
         )
     }
@@ -29,18 +30,22 @@ export default class Weather extends React.Component{
 
 
 async function handleLocation(props){
-//    const weatherRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${props}&limit=5&appid=${config.WeatherAPIKey}`)
-//    .then((response) => response.json())
-//    .then((data) =>console.log(data))
+   const weatherRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${props}&limit=5&appid=${config.WeatherAPIKey}`)
+   .then((response) => response.json())
+   .then((data) =>console.log(data))
 }
 
 
 function getWeather(props){
-    handleLocation(props)
-    return(
+    const location = handleLocation(props)
+    const weatherInfo = (
         <>
-        <h2>{props}</h2>
+            <h1>{props}</h1>
+
         </>
+    )
+    return(
+        ReactDOM.render(weatherInfo,document.getElementById("weatherOutput"))
 
     );
 }
