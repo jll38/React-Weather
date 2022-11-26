@@ -15,14 +15,21 @@ export default class Weather extends React.Component{
     render(){
         return(
             <>
+                <div class="w-container">
                 <Form>
-                    <Form.Group className="mb-2 w-50" controlId="formWeatherLocation">
+                    <Form.Group className="mb-2" controlId="formWeatherLocation">
                       <Form.Label>Location</Form.Label>
                         <Form.Control type="text" placeholder="New York, NY" id="weatherInput" />
                      </Form.Group>
-                     <Button variant="primary" onClick={() => {getWeather(document.getElementById('weatherInput').value)}}>Get The Weather</Button>
+                     <Button variant="primary" onClick={() => {handleLocation(document.getElementById('weatherInput').value)}}>Get The Weather</Button>
                 </Form>
-                <div id="weatherOutput"></div>
+                <div class="w-sub-output">
+                    <h2>New York, NY</h2>
+                    <h3>Temp: </h3>
+                    <h3>Feels like: </h3>
+                    <h3>Percipitation: </h3>
+                </div>
+                </div>
             </>
         )
     }
@@ -32,12 +39,14 @@ export default class Weather extends React.Component{
 async function handleLocation(props){
    const weatherRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${props}&limit=5&appid=${config.WeatherAPIKey}`)
    .then((response) => response.json())
-   .then((data) =>console.log(data))
+   .then((data) => getWeather(data));
+   
+
 }
 
 
 function getWeather(props){
-    const location = handleLocation(props)
+    console.log(`Getting weather ${JSON.stringify(props)}`)
     const weatherInfo = (
         <>
             {props && <h1>Displaying Weather for: {props}</h1>}
@@ -47,6 +56,5 @@ function getWeather(props){
     )
     return(
         ReactDOM.render(weatherInfo,document.getElementById("weatherOutput"))
-
     );
 }

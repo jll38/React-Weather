@@ -1,9 +1,24 @@
+h1{
+  font-family:'Teko';
+  font-weight:500;
+  font-size:48px;
+}
+h2{
+  font-family:'Teko';
+  font-weight:400;
+  font-size:40px;
+}
+h3{
+  font-family:'Teko';
+  font-size:30px;
+  font-weight:300;
+}
 .App {
   text-align: center;
 }
 
 .App-body {
-  background-color: #410d0d;
+  background-color: #1ac453;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,6 +39,25 @@ label{
 form{
   display:inline;
 }
-#weather-container{
-  width: 61%;
+
+.w-container{
+  padding:50px 25px;
+  color:black;
+  background-color: white;
+  border-radius: 5%;
+  min-width:300px;
+  max-width: 600px;
+  margin:0 auto;
+  height:500px;
+  box-shadow: 16px 24px 53px -18px rgba(0,0,0,0.61);
+-webkit-box-shadow: 16px 24px 53px -18px rgba(0,0,0,0.61);
+-moz-box-shadow: 16px 24px 53px -18px rgba(0,0,0,0.61);
+}
+.w-sub-output{
+  padding-top:30px;
+  height:300px;
+}
+
+.w-container h3{
+  text-align:left;
 }
